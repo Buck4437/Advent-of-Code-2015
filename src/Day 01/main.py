@@ -1,16 +1,19 @@
 with open("input.txt", "r") as f:
-    nums = [int(line.strip()) for line in f.readlines()]
+    dat = [1 if c == "(" else -1 for c in f.readlines()[0]]
 
 
-def count(size=1):
-    tally = 0
-    for i in range(len(nums) - size):
-        if nums[i] < nums[i+size]:
-            tally += 1
-    return tally
+def part1():
+    return sum(dat)
 
 
-# Part 1
-print(count())
-# Part 2
-print(count(3))
+def part2():
+    pos = 0
+    sum = 0
+    while sum != -1:
+        sum += dat[pos]
+        pos += 1
+    return pos
+
+
+print(part1())
+print(part2())
